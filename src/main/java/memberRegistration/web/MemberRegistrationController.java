@@ -15,17 +15,17 @@ public class MemberRegistrationController {
     @Autowired
     private MemberRegisterService service;
 
-    @RequestMapping("/sample")
+    @RequestMapping("/member/register")
     public String registerMember(@Validated Member member, BindingResult result) {
         if (result.hasErrors()) {
-            return "simpleValidation";
+            return "memberRegistration";
         }
         service.addMember(member);
-        return "result";
+        return "memberRegistrationResult";
     }
 
     @RequestMapping("/")
     public String welcome(@ModelAttribute Member member) {
-        return "simpleValidation";
+        return "memberRegistration";
     }
 }

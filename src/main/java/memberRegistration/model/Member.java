@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 public class Member {
     @Min(value = 1)
     @Max(value = 999)
-    @Digits(integer = 3, fraction = 0)
+    @Digits(integer = 3, fraction = 0, message = "\"${validatedValue}\" is not valid.")
     private Integer id;
 
     @Size(min = 4, max = 12)
