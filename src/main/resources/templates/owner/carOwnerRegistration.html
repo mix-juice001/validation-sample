@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" th:href="@{/css/style.css}" />
+</head>
+<body>
+<form action="#" th:action="@{/carOwner/register}" th:object="${carOwner}" method="post">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}" th:errorclass="error-input"/></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error-message">Name Error</td>
+        </tr>
+        <tr>
+            <td>age:</td>
+            <td><input type="text" th:field="*{age}" th:errorclass="error-input"/></td>
+            <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="error-message">Age Error</td>
+        </tr>
+        <tr>
+            <td>sex:</td>
+            <td th:each="s:${radioEnum}">
+                <label><input type="radio" th:text="${s.value}" th:value="${s.name}" th:field="*{sex}" name="sex" /></label>
+            </td>
+            <td th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}" class="error-message">Sex Error</td>
+        </tr>
+        <tr>
+            <td>Car-color:</td>
+            <td><input type="text" th:field="*{car.color}" th:errorclass="error-input"/></td>
+            <td th:if="${#fields.hasErrors('car.color')}" th:errors="*{car.color}" class="error-message">Car-color Error</td>
+        </tr>
+        <tr>
+            <td>Car-model:</td>
+            <td><input type="text" th:field="*{car.model}" th:errorclass="error-input"/></td>
+            <td th:if="${#fields.hasErrors('car.model')}" th:errors="*{car.model}" class="error-message">Car-model Error</td>
+        </tr>
+        <tr>
+            <td>Car-constructionYear:</td>
+            <td><input type="text" th:field="*{car.constructionYear}" th:errorclass="error-input"/></td>
+            <td th:if="${#fields.hasErrors('car.constructionYear')}" th:errors="*{car.constructionYear}" class="error-message">Car-constructionYear Error</td>
+        </tr>
+        <tr>
+            <td><button type="submit">Submit</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
