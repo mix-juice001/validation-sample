@@ -1,27 +1,24 @@
 package memberRegistration.model.owner;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 public class CarOwner {
 
-    public interface GroupMale {
-    }
-    ;
-
-    public interface GroupFemale {
-    }
-    ;
-
-    @Min(value = 1)
-    @Max(value = 120)
-    @Digits(integer = 3, fraction = 0)
+    @Min(value = 1, groups = {Register.class, Suspend.class})
+    @Max(value = 120, groups = {Register.class, Suspend.class})
+    @Digits(integer = 3, fraction = 0, groups = {Register.class, Suspend.class})
+    @NotNull(groups = {Register.class, Suspend.class})
     private Integer age;
 
-    @Size(min = 4, max = 12)
+    @Size(min = 4, max = 12, groups = {Register.class, Suspend.class})
+    @NotEmpty(groups = {Register.class, Suspend.class})
     private String name;
 
-    private SexType sex;
+    @NotNull(groups = {Register.class, Suspend.class})
+    private GenderType genderType;
 
     @Valid
     private Car car;
@@ -43,12 +40,12 @@ public class CarOwner {
         this.name = name;
     }
 
-    public SexType getSex() {
-        return sex;
+    public GenderType getGenderType() {
+        return genderType;
     }
 
-    public void setSex(SexType sex) {
-        this.sex = sex;
+    public void setGenderType(GenderType genderType) {
+        this.genderType = genderType;
     }
 
     public Car getCar() {

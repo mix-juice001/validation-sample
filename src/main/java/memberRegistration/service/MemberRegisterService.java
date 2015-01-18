@@ -1,8 +1,8 @@
 package memberRegistration.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import memberRegistration.model.Member;
-import memberRegistration.model.MemberRepository;
+import memberRegistration.model.member.Member;
+import memberRegistration.model.member.MemberRepository;
 import org.springframework.stereotype.Component;
 
 @Component

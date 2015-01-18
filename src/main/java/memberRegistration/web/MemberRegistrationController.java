@@ -6,26 +6,27 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import memberRegistration.model.Member;
+import memberRegistration.model.member.Member;
 import memberRegistration.service.MemberRegisterService;
 
 @Controller
+@RequestMapping("member")
 public class MemberRegistrationController {
 
     @Autowired
     private MemberRegisterService service;
 
-    @RequestMapping("/member/register")
+    @RequestMapping("register")
     public String registerMember(@Validated Member member, BindingResult result) {
         if (result.hasErrors()) {
-            return "memberRegistration";
+            return "member/registration";
         }
         service.addMember(member);
-        return "memberRegistrationResult";
+        return "member/result";
     }
 
-    @RequestMapping("/")
+    @RequestMapping
     public String welcome(@ModelAttribute Member member) {
-        return "memberRegistration";
+        return "member/registration";
     }
 }

@@ -1,14 +1,14 @@
-package memberRegistration.model;
+package memberRegistration.model.member;
 
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.*;
 
 public class Member {
+    @NotNull
     @Min(value = 1)
     @Max(value = 999)
-    @Digits(integer = 3, fraction = 0, message = "\"${validatedValue}\" is not valid.")
+    @Digits(integer = 3, fraction = 0)
     private Integer id;
 
     @Size(min = 4, max = 12)

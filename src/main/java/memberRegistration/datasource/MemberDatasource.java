@@ -1,7 +1,7 @@
 package memberRegistration.datasource;
 
-import memberRegistration.model.Member;
-import memberRegistration.model.MemberRepository;
+import memberRegistration.model.member.Member;
+import memberRegistration.model.member.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

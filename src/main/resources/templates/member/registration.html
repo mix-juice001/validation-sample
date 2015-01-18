@@ -11,12 +11,12 @@
             <td th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="error-message">ID Error</td>
         </tr>
         <tr>
-            <td>Name:</td>
+            <td>名前:</td>
             <td><input type="text" th:field="*{name}" th:errorclass="error-input"/></td>
             <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error-message">Name Error</td>
         </tr>
         <tr>
-            <td><button type="submit">Submit</button></td>
+            <td><button type="submit">登録</button></td>
         </tr>
     </table>
 </form>

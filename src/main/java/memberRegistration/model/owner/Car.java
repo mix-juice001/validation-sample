@@ -5,18 +5,20 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 public class Car {
 
-    @NotEmpty
+    @NotEmpty(groups = Register.class)
     private String color;
 
-    @NotEmpty(groups = CarOwner.GroupMale.class)
-    @Length(max = 10)
+    @NotEmpty(groups = Register.class)
+    @Length(max = 10, groups = {Register.class, Suspend.class})
     private String model;
 
-    @Max(value = 2015)
-    @Min(value = 1960)
+    @Max(value = 2015, groups = {Register.class, Suspend.class})
+    @Min(value = 1960, groups = {Register.class, Suspend.class})
+    @NotNull(groups = {Register.class})
     private Integer constructionYear;
 
     public String getColor() {

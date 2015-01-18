@@ -1,10 +1,10 @@
 package memberRegistration.model.owner;
 
-public class Sex {
+public class Gender {
     private String id;
     private String value;
 
-    public Sex(String id, String value) {
+    public Gender(String id, String value) {
         this.id = id;
         this.value = value;
     }

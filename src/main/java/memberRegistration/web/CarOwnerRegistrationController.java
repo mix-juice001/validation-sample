@@ -1,7 +1,9 @@
 package memberRegistration.web;
 
 import memberRegistration.model.owner.CarOwner;
-import memberRegistration.model.owner.SexType;
+import memberRegistration.model.owner.GenderType;
+import memberRegistration.model.owner.Register;
+import memberRegistration.model.owner.Suspend;
 import memberRegistration.service.CarOwnerRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,37 +13,38 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("carOwner")
 public class CarOwnerRegistrationController {
 
     @Autowired
     private CarOwnerRegisterService service;
 
-    @ModelAttribute("radioEnum")
-    public SexType[] sexTypeList() {
-        return SexType.values();
+    @ModelAttribute("genderTypes")
+    public GenderType[] genderTypeList() {
+        return GenderType.values();
     }
 
-    @RequestMapping("/carOwner/register")
-    public String validateGroup(@Validated CarOwner carOwner, BindingResult result) {
+    @RequestMapping("register")
+    public String register(@Validated({Register.class}) CarOwner carOwner, BindingResult result) {
         if (result.hasErrors()) {
-            return "owner/carOwnerRegistration";
+            return "owner/registration";
         }
         service.addCarOwner(carOwner);
-        return "owner/carOwnerRegistrationResult";
+        return "owner/result";
     }
 
-    @RequestMapping(value = "/carOwner/register", params = "sex=MALE")
-    public String validateGroupMale(@Validated({CarOwner.GroupMale.class}) CarOwner carOwner, BindingResult result) {
+    @RequestMapping(value = "register", params = "action=suspend")
+    public String suspend(@Validated({Suspend.class}) CarOwner carOwner, BindingResult result) {
         if (result.hasErrors()) {
-            return "owner/carOwnerRegistration";
+            return "owner/registration";
         }
         service.addCarOwner(carOwner);
-        return "owner/carOwnerRegistrationResult";
+        return "owner/result";
     }
 
-    @RequestMapping("/carOwner")
+    @RequestMapping
     public String welcome(@ModelAttribute CarOwner carOwner) {
-        return "owner/carOwnerRegistration";
+        return "owner/registration";
     }
 
 }
