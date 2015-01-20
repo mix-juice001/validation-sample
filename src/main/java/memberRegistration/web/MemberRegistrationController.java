@@ -17,7 +17,7 @@ public class MemberRegistrationController {
     private MemberRegisterService service;
 
     @RequestMapping("register")
-    public String registerMember(@Validated Member member, BindingResult result) {
+    public String register(@Validated Member member, BindingResult result) {
         if (result.hasErrors()) {
             return "member/registration";
         }
