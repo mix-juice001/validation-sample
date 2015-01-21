@@ -7,17 +7,16 @@ import javax.validation.constraints.*;
 
 public class CarOwner {
 
-    @Min(value = 1, groups = {Register.class, Suspend.class})
-    @Max(value = 120, groups = {Register.class, Suspend.class})
-    @Digits(integer = 3, fraction = 0, groups = {Register.class, Suspend.class})
-    @NotNull(groups = {Register.class, Suspend.class})
+    @Min(value = 1, groups = {Register.class, Suspend.class}, message = "年齢は1から120の範囲で入力してください。")
+    @Max(value = 120, groups = {Register.class, Suspend.class}, message = "年齢は1から120の範囲で入力してください。")
+    @NotNull(groups = {Register.class, Suspend.class}, message = "年齢は必ず入力してください。")
     private Integer age;
 
-    @Size(min = 4, max = 12, groups = {Register.class, Suspend.class})
-    @NotEmpty(groups = {Register.class, Suspend.class})
+    @Size(min = 4, max = 12, groups = {Register.class, Suspend.class}, message = "名前は4文字から12文字の範囲で入力してください。")
+    @NotEmpty(groups = {Register.class, Suspend.class}, message = "名前は必ず入力してください。")
     private String name;
 
-    @NotNull(groups = {Register.class, Suspend.class})
+    @NotNull(groups = {Register.class, Suspend.class}, message = "性別は必ず入力してください。")
     private GenderType genderType;
 
     @Valid

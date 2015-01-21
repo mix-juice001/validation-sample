@@ -5,13 +5,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.constraints.*;
 
 public class Member {
-    @NotNull
-    @Min(value = 1)
-    @Max(value = 999)
-    @Digits(integer = 3, fraction = 0)
+    @NotNull(message = "IDは必ず入力してください。")
+    @Min(value = 1, message = "IDは1から999の範囲で入力してください。")
+    @Max(value = 999, message= "IDは1から999の範囲で入力してください。")
     private Integer id;
 
-    @Size(min = 4, max = 12)
+    @Size(min = 4, max = 12, message = "名前は4文字から12文字の範囲で入力してください。")
     private String name;
 
     public Integer getId() {
