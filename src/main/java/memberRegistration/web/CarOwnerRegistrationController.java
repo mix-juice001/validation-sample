@@ -2,8 +2,8 @@ package memberRegistration.web;
 
 import memberRegistration.model.owner.CarOwner;
 import memberRegistration.model.owner.GenderType;
-import memberRegistration.model.owner.Register;
-import memberRegistration.model.owner.Suspend;
+import memberRegistration.model.owner.validation.Sufficient;
+import memberRegistration.model.owner.validation.Necessary;
 import memberRegistration.service.CarOwnerRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +25,7 @@ public class CarOwnerRegistrationController {
     }
 
     @RequestMapping("register")
-    public String register(@Validated({Register.class}) CarOwner carOwner, BindingResult result) {
+    public String register(@Validated({Sufficient.class}) CarOwner carOwner, BindingResult result) {
         if (result.hasErrors()) {
             return "owner/registration";
         }
@@ -34,7 +34,7 @@ public class CarOwnerRegistrationController {
     }
 
     @RequestMapping(value = "register", params = "action=suspend")
-    public String suspend(@Validated({Suspend.class}) CarOwner carOwner, BindingResult result) {
+    public String suspend(@Validated({Necessary.class}) CarOwner carOwner, BindingResult result) {
         if (result.hasErrors()) {
             return "owner/registration";
         }

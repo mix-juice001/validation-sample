@@ -1,5 +1,7 @@
 package memberRegistration.model.owner;
 
+import memberRegistration.model.owner.validation.Sufficient;
+import memberRegistration.model.owner.validation.Necessary;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -9,16 +11,16 @@ import javax.validation.constraints.NotNull;
 
 public class Car {
 
-    @NotEmpty(groups = Register.class, message = "色は必ず入力してください。")
+    @NotEmpty(groups = Sufficient.class, message = "色は必ず入力してください。")
     private String color;
 
-    @NotEmpty(groups = Register.class, message = "モデルは必ず入力してください。")
-    @Length(max = 10, groups = {Register.class, Suspend.class}, message = "モデルは10文字以内で入力してください。")
+    @NotEmpty(groups = Sufficient.class, message = "モデルは必ず入力してください。")
+    @Length(max = 10, groups = {Sufficient.class, Necessary.class}, message = "モデルは10文字以内で入力してください。")
     private String model;
 
-    @Max(value = 2015, groups = {Register.class, Suspend.class}, message = "製造年は1960から2015の範囲で入力してください。")
-    @Min(value = 1960, groups = {Register.class, Suspend.class}, message = "製造年は1960から2015の範囲で入力してください。")
-    @NotNull(groups = {Register.class}, message = "製造年は必ず入力してください。")
+    @Max(value = 2015, groups = {Sufficient.class, Necessary.class}, message = "製造年は1960から2015の範囲で入力してください。")
+    @Min(value = 1960, groups = {Sufficient.class, Necessary.class}, message = "製造年は1960から2015の範囲で入力してください。")
+    @NotNull(groups = {Sufficient.class}, message = "製造年は必ず入力してください。")
     private Integer constructionYear;
 
     public String getColor() {

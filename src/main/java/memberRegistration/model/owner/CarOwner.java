@@ -1,5 +1,7 @@
 package memberRegistration.model.owner;
 
+import memberRegistration.model.owner.validation.Sufficient;
+import memberRegistration.model.owner.validation.Necessary;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.Valid;
@@ -7,16 +9,16 @@ import javax.validation.constraints.*;
 
 public class CarOwner {
 
-    @Min(value = 1, groups = {Register.class, Suspend.class}, message = "年齢は1から120の範囲で入力してください。")
-    @Max(value = 120, groups = {Register.class, Suspend.class}, message = "年齢は1から120の範囲で入力してください。")
-    @NotNull(groups = {Register.class, Suspend.class}, message = "年齢は必ず入力してください。")
+    @Min(value = 1, groups = {Sufficient.class, Necessary.class}, message = "年齢は1から120の範囲で入力してください。")
+    @Max(value = 120, groups = {Sufficient.class, Necessary.class}, message = "年齢は1から120の範囲で入力してください。")
+    @NotNull(groups = {Sufficient.class, Necessary.class}, message = "年齢は必ず入力してください。")
     private Integer age;
 
-    @Size(min = 4, max = 12, groups = {Register.class, Suspend.class}, message = "名前は4文字から12文字の範囲で入力してください。")
-    @NotEmpty(groups = {Register.class, Suspend.class}, message = "名前は必ず入力してください。")
+    @Size(min = 4, max = 12, groups = {Sufficient.class, Necessary.class}, message = "名前は4文字から12文字の範囲で入力してください。")
+    @NotEmpty(groups = {Sufficient.class, Necessary.class}, message = "名前は必ず入力してください。")
     private String name;
 
-    @NotNull(groups = {Register.class, Suspend.class}, message = "性別は必ず入力してください。")
+    @NotNull(groups = {Sufficient.class, Necessary.class}, message = "性別は必ず入力してください。")
     private GenderType genderType;
 
     @Valid
