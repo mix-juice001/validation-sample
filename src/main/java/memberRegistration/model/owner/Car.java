@@ -4,6 +4,7 @@ import memberRegistration.model.owner.validation.Sufficient;
 import memberRegistration.model.owner.validation.Necessary;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -18,8 +19,7 @@ public class Car {
     @Length(max = 10, groups = {Sufficient.class, Necessary.class}, message = "モデルは10文字以内で入力してください。")
     private String model;
 
-    @Max(value = 2015, groups = {Sufficient.class, Necessary.class}, message = "製造年は1960から2015の範囲で入力してください。")
-    @Min(value = 1960, groups = {Sufficient.class, Necessary.class}, message = "製造年は1960から2015の範囲で入力してください。")
+    @Range(min = 1960, max = 2015, groups = {Sufficient.class, Necessary.class}, message = "製造年は1960から2015の範囲で入力してください。")
     @NotNull(groups = {Sufficient.class}, message = "製造年は必ず入力してください。")
     private Integer constructionYear;
 
