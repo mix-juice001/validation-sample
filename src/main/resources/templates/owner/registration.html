@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="../../static/css/style.css" th:href="@{/css/style.css}" />
 </head>
 <body>
+<div th:replace="common/header::header"></div>
 <form action="#" th:action="@{/carOwner/register}" th:object="${carOwner}" method="post">
     <table>
         <tr>
