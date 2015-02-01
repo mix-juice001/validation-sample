@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ログイン画面</title>
+</head>
+<body>
+<div th:if="${param.error}">
+    ID、もしくはパスワードが間違っています。
+</div>
+<div th:if="${param.logout}">
+    ログアウトしました。
+</div>
+<form th:action="@{/login}" method="post">
+    <p>ログイン画面</p>
+    <div><label> ID　　　　: <input type="text" name="username"/> </label></div>
+    <div><label> パスワード: <input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="ログイン"/></div>
+</form>
+●id/pw<br/>
+honda/pw<br/>
+kagawa/pw<br/>
+</body>
+</html>
