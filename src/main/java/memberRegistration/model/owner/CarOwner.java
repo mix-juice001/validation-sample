@@ -25,35 +25,4 @@ public class CarOwner {
     private Car car;
 
 
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public GenderType getGenderType() {
-        return genderType;
-    }
-
-    public void setGenderType(GenderType genderType) {
-        this.genderType = genderType;
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
-    }
 }

@@ -1,13 +1,11 @@
 package memberRegistration.model.owner;
 
-import memberRegistration.model.owner.validation.Sufficient;
 import memberRegistration.model.owner.validation.Necessary;
+import memberRegistration.model.owner.validation.Sufficient;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 public class Car {
@@ -23,27 +21,4 @@ public class Car {
     @NotNull(groups = {Sufficient.class}, message = "製造年は必ず入力してください。")
     private Integer constructionYear;
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public Integer getConstructionYear() {
-        return constructionYear;
-    }
-
-    public void setConstructionYear(Integer constructionYear) {
-        this.constructionYear = constructionYear;
-    }
 }

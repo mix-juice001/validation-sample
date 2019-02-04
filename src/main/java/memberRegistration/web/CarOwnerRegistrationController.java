@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -45,6 +47,18 @@ public class CarOwnerRegistrationController {
     @RequestMapping
     public String welcome(@ModelAttribute CarOwner carOwner) {
         return "owner/registration";
+    }
+
+
+    private static String[] allowFields = {
+            "name",
+            "age",
+            "genderType"
+    };
+
+    @InitBinder
+    public void criteriaBinder(WebDataBinder binder) {
+        binder.setAllowedFields(allowFields);
     }
 
 }
