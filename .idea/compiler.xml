@@ -2,8 +2,12 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="com.example.validation-sample.main" target="1.8" />
+      <module name="com.example.validation-sample.test" target="1.8" />
       <module name="validation-sample.main" target="1.8" />
       <module name="validation-sample.test" target="1.8" />
+      <module name="validation-sample.validation-sample.main" target="1.8" />
+      <module name="validation-sample.validation-sample.test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
